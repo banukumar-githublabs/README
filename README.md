@@ -1,6 +1,6 @@
-Web Scraping & Hosting with Docker
+# Web Scraping & Hosting with Docker
 
-Overview
+# Overview
 
 This project demonstrates how to use Node.js with Puppeteer for web scraping and Python (Flask) for hosting scraped content inside a Docker container.
 
