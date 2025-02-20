@@ -4,14 +4,14 @@ Overview
 
 This project demonstrates how to use Node.js with Puppeteer for web scraping and Python (Flask) for hosting scraped content inside a Docker container.
 
-Prerequisites
+## Prerequisites
 
 Ensure you have Docker installed. If not, install it using the following commands:
 
 curl -fsSL https://get.docker.com -o install-docker.sh
 sudo sh install-docker.sh
 
-Project Structure
+# Project Structure
 
 This project consists of the following files:
 
@@ -25,25 +25,25 @@ requirements.txt – Python dependencies.
 
 Dockerfile – Multi-stage build for the application.
 
-Building the Docker Image
+# Building the Docker Image
 
 To build the Docker image, run:
 
 docker build -t my-scraper-image .
 
-Running the Container
+# Running the Container
 
 Start the container and expose it on port 5000:
 
 docker run -p 5000:5000 my-scraper-image
 
-Passing a URL for Scraping
+# Passing a URL for Scraping
 
 Specify a URL by passing an environment variable during container execution:
 
 docker run -p 5000:5000 -e SCRAPE_URL=https://example.com my-scraper-image
 
-Accessing the Scraped Data
+# Accessing the Scraped Data
 
 Once the container is running, access the scraped data via:
 
@@ -60,30 +60,30 @@ This will return a JSON response containing the scraped content:
   "title": "Example Domain"
 }
 
-Stopping & Restarting the Container
+# Stopping & Restarting the Container
 
 To stop the running container:
 
 docker ps # List running containers
 docker stop <container_id>
 
-To restart the container with a new URL:
+# To restart the container with a new URL:
 
 docker run -p 5000:5000 -e SCRAPE_URL=https://newwebsite.com my-scraper-image
 
-Environment Variables
+# Environment Variables
 
 SCRAPE_URL: The URL to be scraped. This variable is required.
 
 PORT: The port number to use for the Flask server. Default is 5000.
 
-Scraping Details
+# Scraping Details
 
 The scraper uses Puppeteer to load the webpage and extract the title and heading.
 
 The scraped data is stored in a JSON file named scraped_data.json.
 
-Docker Image Details
+# Docker Image Details
 
 The Docker image is built using a multi-stage build process.
 
@@ -91,13 +91,13 @@ The first stage uses the node:18-slim image to install dependencies and run the 
 
 The second stage uses the python:3.10-slim image to install dependencies and run the Flask server.
 
-Security Considerations
+# Security Considerations
 
 Ensure that the SCRAPE_URL variable is set to a trusted URL to avoid potential security vulnerabilities.
 
 Use a secure connection (HTTPS) when accessing the scraped data.
 
-Troubleshooting
+# Troubleshooting
 
 If the scraper fails, check the Chromium installation inside the Node.js stage.
 
